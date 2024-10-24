@@ -1,0 +1,21 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+let num1 = Math.floor(Math.random() * 10 + 1);
+let num2 = Math.floor(Math.random() * 10 + 1);
+let answer = num1 + num2;
+
+// Use backticks for template literals
+rl.question(`What is ${num1} + ${num2}?\n`, (userInput) => {
+    if (parseInt(userInput.trim()) === answer) { // Use parseInt to convert userInput to a number
+        rl.close(); // Close the interface if the answer is correct
+    } else {
+        rl.setPrompt('Incorrect Response, Please try again\n');
+        rl.prompt();
+    }
+});
+
+// Event listener for the close event
+rl.on('close', () => {
+    console.log("Correct Answer!");
+});

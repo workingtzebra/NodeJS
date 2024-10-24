@@ -1,0 +1,8 @@
+eventclass only occurs when an event is emitted 
+we can do this with and without arguements 
+
+
+we can also make custom object and take advantage of eventemiteer
+
+when oyu emit an event, the event gets executed synchronously 
+whatever emits first, gets executed first

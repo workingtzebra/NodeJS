@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSmart Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .product {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .reviews {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to ShopSmart</h1>
+    <h2>Our Products</h2>
+
+    <div id="products"></div>
+
+    <script>
+        const data = {
+            "store": {
+                "name": "ShopSmart",
+                "location": "123 Market St, Springfield",
+                "products": [
+                    {
+                        "id": 1,
+                        "name": "Wireless Headphones",
+                        "category": "Electronics",
+                        "price": 89.99,
+                        "inStock": true,
+                        "rating": 4.5,
+                        "reviews": [
+                            {
+                                "user": "Alice",
+                                "comment": "Great sound quality!",
+                                "rating": 5
+                            },
+                            {
+                                "user": "Bob",
+                                "comment": "Comfortable but a bit pricey.",
+                                "rating": 4
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "name": "Yoga Mat",
+                        "category": "Fitness",
+                        "price": 29.99,
+                        "inStock": true,
+                        "rating": 4.8,
+                        "reviews": [
+                            {
+                                "user": "Charlie",
+                                "comment": "Perfect for my workouts!",
+                                "rating": 5
+                            },
+                            {
+                                "user": "Diana",
+                                "comment": "Good grip and thickness.",
+                                "rating": 4
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "name": "Coffee Maker",
+                        "category": "Home Appliances",
+                        "price": 49.99,
+                        "inStock": false,
+                        "rating": 4.0,
+                        "reviews": [
+                            {
+                                "user": "Ethan",
+                                "comment": "Brews coffee quickly.",
+                                "rating": 4
+                            },
+                            {
+                                "user": "Fiona",
+                                "comment": "A bit noisy.",
+                                "rating": 3
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        const productsContainer = document.getElementById('products');
+
+        data.store.products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+
+            productDiv.innerHTML = `
+                <h3>${product.name} (${product.category})</h3>
+                <p>Price: $${product.price.toFixed(2)}</p>
+                <p>In Stock: ${product.inStock ? "Yes" : "No"}</p>
+                <p>Rating: ${product.rating} / 5</p>
+                <div class="reviews">
+                    <strong>Reviews:</strong>
+                    <ul>
+                        ${product.reviews.map(review => `
+                            <li><strong>${review.user}:</strong> ${review.comment} (Rating: ${review.rating})</li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+
+            productsContainer.appendChild(productDiv);
+        });
+    </script>
+
+</body>
+</html>
